@@ -6,6 +6,7 @@ import spring.swagger.service.FabricService;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class FabricServiceImpl implements FabricService {
 
     private static final Map<String, Fabric> fabricRepository = new HashMap<>();
@@ -20,5 +21,11 @@ public class FabricServiceImpl implements FabricService {
     public Fabric findDescriptionByFabricNo(String fabricNo) {
         // fabric_no 코드로 description을 조회
         return fabricRepository.get(fabricNo);
+    }
+
+    // description 문자열 반환 추가 메소드
+    public String getFabricDescription(String fabricNo) {
+        Fabric fabric = this.findDescriptionByFabricNo(fabricNo);
+        return (fabric != null) ? fabric.getDescription() : null;
     }
 }
